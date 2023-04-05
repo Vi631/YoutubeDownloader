@@ -1,11 +1,8 @@
 # Import tkinter, pytube, ttk and filedialog libraries
-import os.path
 import tkinter as tk
 from pytube import YouTube
-from tkinter import ttk, filedialog, Tk, PhotoImage
-import sys
+from tkinter import ttk, filedialog
 
-from tkinter.ttk import *
 
 # Define a global variable to store the selected folder path
 folder_path = ''
