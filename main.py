@@ -54,6 +54,7 @@ def resize_font(event):
     text_box_2.config(font=font)
     button.config(font=font)
     file_select_button.config(font=font)
+    mp3_button.config(font=font)
 
 # Define a function to clear the ghost text when the user clicks on a text box
 def clear_ghost_text(event):
@@ -84,6 +85,21 @@ def restore_ghost_text(event):
             widget.insert(0, 'Video Name')
         widget.config(fg='grey')
 
+# Define a function to download only the mp3 of a YouTube video
+def download_mp3():
+    # Get the url and the video name from the text boxes
+    url = text_box_1.get()
+    video_name = text_box_2.get()
+
+    # Create a YouTube object with the url
+    youtube = YouTube(url)
+
+    # Get the audio stream of the YouTube object
+    stream = youtube.streams.filter(only_audio=True).first()
+
+    # Download and save the audio stream with the video name in the selected folder path
+    stream.download(output_path=folder_path, filename=video_name)
+
 # Create a window object and set its background color to light blue and title to YouTube Downloader
 window = tk.Tk()
 
@@ -93,6 +109,10 @@ window.title('YouTube Downloader')
 # Change the tkinter icon
 #photo = PhotoImage(file = "youtubelogo.png")
 #window.iconphoto(False, photo)
+
+# Create a button to download mp3
+mp3_button = tk.Button(window, text="Download MP3", command=download_mp3, bg='green', fg='white')
+mp3_button.grid(row=5, column=0, sticky='nsew')
 
 # Create two text boxes and set their background color to white and sticky option to expand in both directions
 text_box_1 = tk.Entry(window, bg='white')
