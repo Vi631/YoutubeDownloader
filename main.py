@@ -106,7 +106,7 @@ window = tk.Tk()
 window.config(bg='light blue')
 window.title('YouTube Downloader')
 
-# Change the tkinter icon
+# Change the tkinter icon to youtubelogo.png
 #photo = PhotoImage(file = "youtubelogo.png")
 #window.iconphoto(False, photo)
 
@@ -154,5 +154,8 @@ window.grid_columnconfigure(0, weight=1)
 # Bind the resize_font function to the window's configure event
 window.bind('<Configure>', resize_font)
 
+# Lock the window x and y size to prevent the window from being resized more than the default size
+window.minsize(200, 200)
+window.maxsize(300, 300)
 # Start the main loop of the window
 window.mainloop()
